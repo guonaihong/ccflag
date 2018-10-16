@@ -69,6 +69,7 @@ class CCFlagSet {
 CCFlagSet::CCFlagSet(string name, on_error_type error_handling){
     this->name          = name;
     this->error_handling = error_handling;
+    memset(this->err_buf, 0, sizeof(this->err_buf));
 }
 
 void CCFlagSet::default_usage() {
@@ -92,7 +93,7 @@ void CCFlagSet::default_usage() {
     };
 
     for (auto kv : this->formal) {
-        auto name  = kv.second.type_name;
+        auto name  = kv.second.name;
         auto usage = kv.second.usage;
         auto s     = "    -" + name;
 
