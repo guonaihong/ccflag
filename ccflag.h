@@ -135,7 +135,7 @@ void CCFlagSet::failf(const char *fmt, ...) {
 
     fprintf(stdout, "%s\n", err_buf);
 
-    //cflag_usage(c);
+    usage();
 }
 
 bool CCFlagSet::parse_one() {
@@ -185,6 +185,7 @@ bool CCFlagSet::parse_one() {
             snprintf(this->err_buf, sizeof(this->err_buf), "ccflag: help requested");
             return false;
         }
+        return failf("flag provided but not defined: -%s", name.c_str()), false;
     }
 
     auto flag = formal[name];
