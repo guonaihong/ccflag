@@ -29,13 +29,7 @@ class CCFlag{
 };
 
 class CCFlagSet {
-
-    string name;
-    std::map<string, CCFlag> formal;
-    int error_handling;
-
     public:
-
         CCFlagSet(string name, on_error_type error_handling);
 
         string parse(char **argv);
@@ -49,7 +43,13 @@ class CCFlagSet {
         void double_var(double *p, string name, string defvalue, string usage);
 
         void string_var(string *p, string name, string defvalue, string usage);
+
     private:
+        string name;
+
+        std::map<string, CCFlag> formal;
+
+        int error_handling;
 
         void var(void *p, string name, string value, string usage,
                 std::function<bool (string value)> set,
@@ -74,10 +74,10 @@ CCFlagSet::CCFlagSet(string name, on_error_type error_handling){
 
 void CCFlagSet::default_usage() {
     if (this->name == "") {
-		fprintf(stderr, "Usage:\n");
-	} else {
-		fprintf(stderr, "Usage of %s:\n", this->name.c_str());
-	}
+        fprintf(stderr, "Usage:\n");
+    } else {
+        fprintf(stderr, "Usage of %s:\n", this->name.c_str());
+    }
 
     auto replace_all = [](std::string str, const std::string& from, const std::string& to) -> string {
         if(from.empty())
