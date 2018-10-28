@@ -20,21 +20,21 @@ void CCFlagSet::usage();
 
 * 各种类型勾子函数, 定义需要解析的命令行选项，遇到时自动存放至用户设置的变量里，下面是现在支持的变量类型
   * bool
-```
-void CCFlagSet::bool_var(bool *p, string name, string defvalue, string usage);
-```
+  ```
+  void CCFlagSet::bool_var(bool *p, string name, string defvalue, string usage);
+  ```
   * int
-```c++
-void CCFlagSet::int_var(int *p, string name, string defvalue, string usage);
-```
+  ```c++
+  void CCFlagSet::int_var(int *p, string name, string defvalue, string usage);
+  ```
   * double
-``` c++
-void CCFlagSet::double_var(double *p, string name, string defvalue, string usage);
-```
+  ``` c++
+  void CCFlagSet::double_var(double *p, string name, string defvalue, string usage);
+  ```
   * string
-```c++
-void CCFlagSet::string_var(string *p, string name, string defvalue, string usage);
-```
+  ```c++
+  void CCFlagSet::string_var(string *p, string name, string defvalue, string usage);
+  ```
 * 启动解析(必须要调用的函数)
 ```c++
 // argv命令行参数
